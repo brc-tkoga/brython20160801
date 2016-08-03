@@ -9,8 +9,8 @@ require_once ('HTTP/Client.php');
 $url = "http://54.64.68.9/timecard/staff/login.php";
 $client = new HTTP_Client();
 $params = array(
-			"staff_id" => "0370",
-			"password" => "tk2016brc",
+			"staff_id" => "社員番号",
+			"password" => "パスワード",
 			// ボタン名までチェックしているっぽい。これが肝
 			"submit" => "ログイン"
 );
@@ -30,9 +30,9 @@ $seriarize = serialize($classCookieManager);
 $url = "http://54.64.68.9/timecard/staff/list/index.php";
 $client = new HTTP_Client(null,null,unserialize($seriarize));
 $params = array(
-		"list" => "2016-02",
+		"list" => "YYYY-MM",
 		//サーバー側で強制的にログイン者の社員番号になっている。
-		"staff" => "0382"
+		"staff" => "社員番号"
 );
 $response_code = $client->get($url, $params);
 if($response_code != 200){
